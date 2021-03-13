@@ -27,6 +27,12 @@ public class HelloController {
   @RequestMapping(value = "/hello-world-internationalized", method = RequestMethod.GET)
   public String helloWorldInternationalized(
       @RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+
+    // spring allows a better way to do i18n
+    // steps
+    // 1. instead of adding locale via @RequestHeader, just use LocalHeaderContext.getLocale()
+    // 2. remove the above argument from the controller method
+
     return messageSource.getMessage("good.morning.message", null, locale);
   }
 }

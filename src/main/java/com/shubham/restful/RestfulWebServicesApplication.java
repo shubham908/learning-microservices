@@ -18,6 +18,9 @@ public class RestfulWebServicesApplication {
 
   @Bean
   public LocaleResolver localeResolver() {
+    // If we decide to use the LocaleResolverContext in the controller method then it is
+    // better to use AcceptHeaderLocaleResolver class instead of SessionLocaleResolver
+
     SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
     sessionLocaleResolver.setDefaultLocale(Locale.US);
 
@@ -26,6 +29,10 @@ public class RestfulWebServicesApplication {
 
   @Bean
   public ResourceBundleMessageSource messageSource() {
+    // We can remove this bean by adding a property in application.properties
+    // add spring.messages.basename=messages
+    // all the other i18n settings should follow a pattern like "messages_<locale>"
+
     ResourceBundleMessageSource resourceBundleMessageSource = new ResourceBundleMessageSource();
     resourceBundleMessageSource.setBasename("messages");
 
