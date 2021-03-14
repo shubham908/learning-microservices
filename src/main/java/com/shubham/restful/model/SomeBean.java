@@ -1,16 +1,15 @@
 package com.shubham.restful.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFilter;
 
 // @JsonIgnoreProperties(value = {"field2"})
 // This is the other way of specifying values to ignore.
 // But, this is hard-coded field-name.
 // Choose @JsonIgnore more
+@JsonFilter(value = "SomeBeanFilter")
 public class SomeBean {
 
     private String field1;
-
-    @JsonIgnore
     private String field2;
     private String field3;
 
